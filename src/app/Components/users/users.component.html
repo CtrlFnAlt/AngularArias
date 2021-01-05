@@ -1,0 +1,21 @@
+<h1>{{Title}}</h1>
+
+<table>
+  <caption>Gli Utenti</caption>
+  <th>Nome</th>
+  <th>Cognome</th>
+  <th>Età</th>
+  <th>Codice Fiscale</th>
+  <th>Email</th>
+  <th>Telefono</th>
+  <th>Provincia</th>
+  <tr *ngFor="let user of users">
+    <td>{{user.name}}</td>
+    <td>{{user.lastname}}</td>
+    <td>{{user.age}}</td>
+    <td>{{user.codf}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.phone}}</td>
+    <td>{{user.province}}</td>
+  </tr>
+</table>
