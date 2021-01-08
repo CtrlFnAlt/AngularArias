@@ -24,6 +24,8 @@ export class UserDetailComponent implements OnInit {
   }
 
   private _user: IUser;
+  reset: string = 'Resetta';
+  save: string = 'Salva';
 
   get user() {
     return this._user;

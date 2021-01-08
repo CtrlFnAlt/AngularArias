@@ -19,6 +19,8 @@ export class UserComponent implements OnInit {
   //FonAwesome
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
+  update: string = 'Modifica';
+  delete: string = 'Elimina';
 
   constructor(private userService: UserService) {
 

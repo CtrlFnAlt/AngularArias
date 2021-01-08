@@ -37,10 +37,10 @@
   </div>
   <div class="form-group form-footer">
     <button (click)="saveUser()" class="btn btn-success pers" type="button">
-      <fa-icon [icon]="faSave"></fa-icon>
+      <fa-icon [icon]="faSave" [title]="save"></fa-icon>
     </button>
     <button (click)="resetForm(formEditCreate.form)" class="btn btn-primary pers" type="button">
-      <fa-icon [icon]="faUndo" data-ballon="Reset" data-balloon-pos="up"></fa-icon>
+      <fa-icon [icon]="faUndo" [title]="reset" data-ballon="Reset" data-balloon-pos="up"></fa-icon>
     </button>
   </div>
 </form>

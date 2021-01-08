@@ -6,6 +6,6 @@
 <td>{{user.province}}</td>
 <td>{{user.phone}}</td>
 <td>
-  <button class="btn btn-danger pers" (click)="deleteUser()"><fa-icon [icon]="faTrashAlt"></fa-icon></button>
-  <button class="btn btn-warning pers " (click)="updateUser()"><fa-icon [icon]="faEdit"></fa-icon></button>
+  <button class="btn btn-danger pers" (click)="deleteUser()"><fa-icon [icon]="faTrashAlt" [title]="delete"></fa-icon></button>
+  <button class="btn btn-warning pers " (click)="updateUser()"><fa-icon [icon]="faEdit" [title]="update"></fa-icon></button>
 </td>
