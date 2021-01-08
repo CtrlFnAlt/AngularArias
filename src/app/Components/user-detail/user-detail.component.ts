@@ -5,6 +5,7 @@ import {UserClass} from "../../Classes/user-class";
 
 //FontAwesome
 import {faSave, faUndo} from '@fortawesome/free-solid-svg-icons';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user-detail',
@@ -16,16 +17,15 @@ export class UserDetailComponent implements OnInit {
   //FontAwesome
   faSave = faSave;
   faUndo = faUndo;
-
+  reset: string = 'Resetta';
+  save: string = 'Salva';
 
   private userCopy: IUser;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private route: ActivatedRoute) {
   }
 
   private _user: IUser;
-  reset: string = 'Resetta';
-  save: string = 'Salva';
 
   get user() {
     return this._user;
@@ -37,6 +37,12 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = new UserClass();
+    this.route.params.subscribe(
+      (param) => {
+
+        this.user = this.userService.getUser(+param.id);
+      });
   }
 
   resetForm(form) {

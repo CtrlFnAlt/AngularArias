@@ -1,11 +1,18 @@
 <td>{{user.name}}</td>
 <td>{{user.lastname}}</td>
-<td>{{user.age}}</td>
-<td>{{user.codf}}</td>
+<!--<td>{{user.age}}</td>-->
+<!--<td>{{user.codf}}</td>-->
 <td>{{user.email}}</td>
+<!--<td>{{user.phone}}</td>-->
 <td>{{user.province}}</td>
-<td>{{user.phone}}</td>
 <td>
-  <button class="btn btn-danger pers" (click)="deleteUser()"><fa-icon [icon]="faTrashAlt" [title]="delete"></fa-icon></button>
-  <button class="btn btn-warning pers " (click)="updateUser()"><fa-icon [icon]="faEdit" [title]="update"></fa-icon></button>
+  <button (click)="deleteUser()" class="btn btn-danger pers">
+    <fa-icon [icon]="faTrashAlt" [title]="delete"></fa-icon>
+  </button>
+  <button (click)="updateUser()" class="btn btn-warning pers">
+    <fa-icon [icon]="faEdit" [title]="update"></fa-icon>
+  </button>
+  <button class="btn btn-info pers">
+    <fa-icon [icon]="faInfoCircle" [title]="info"></fa-icon>
+  </button>
 </td>

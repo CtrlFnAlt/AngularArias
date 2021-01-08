@@ -46,6 +46,10 @@ export class UserService {
     return this.users;
   }
 
+  getUser(id: number): IUser{
+    return this.users.find(user => user.id === id);
+  }
+
   deleteUsers(user: IUser){
     const index = this.users.indexOf(user);
     if (index >= 0) {

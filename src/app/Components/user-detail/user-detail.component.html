@@ -2,12 +2,14 @@
   <input [(ngModel)]="user.id" name="id" type="hidden">
   <div class="form-group">
     <label for="firstname">Nome</label>
-    <input [(ngModel)]="user.name" class="form-control" id="firstname" name="firstname" placeholder="Inserisci il Nome..."
+    <input [(ngModel)]="user.name" class="form-control" id="firstname" name="firstname"
+           placeholder="Inserisci il Nome..."
            type="text">
   </div>
   <div class="form-group">
     <label for="lastname">Cognome</label>
-    <input [(ngModel)]="user.lastname" class="form-control" id="lastname" name="lastname" placeholder="Inserisci il Cognome..."
+    <input [(ngModel)]="user.lastname" class="form-control" id="lastname" name="lastname"
+           placeholder="Inserisci il Cognome..."
            type="text">
   </div>
   <div class="form-group">
@@ -27,20 +29,22 @@
   </div>
   <div class="form-group">
     <label for="phone">Telefono</label>
-    <input [(ngModel)]="user.phone" class="form-control" id="phone" name="phone" placeholder="Inserisci il Numero di Telefono..."
+    <input [(ngModel)]="user.phone" class="form-control" id="phone" name="phone"
+           placeholder="Inserisci il Numero di Telefono..."
            type="text">
   </div>
   <div class="form-group">
     <label for="province">Provincia</label>
-    <input [(ngModel)]="user.province" class="form-control" id="province" name="province" placeholder="Inserisci la Provincia..."
+    <input [(ngModel)]="user.province" class="form-control" id="province" name="province"
+           placeholder="Inserisci la Provincia..."
            type="text">
   </div>
   <div class="form-group form-footer">
-    <button (click)="saveUser()" class="btn btn-success pers" type="button">
-      <fa-icon [icon]="faSave" [title]="save"></fa-icon>
+    <button (click)="saveUser()" class="btn btn-success pers">Salva
+<!--      <fa-icon [icon]="faSave" [title]="save"></fa-icon>-->
     </button>
-    <button (click)="resetForm(formEditCreate.form)" class="btn btn-primary pers" type="button">
-      <fa-icon [icon]="faUndo" [title]="reset" data-ballon="Reset" data-balloon-pos="up"></fa-icon>
+    <button (click)="resetForm(formEditCreate.form)" class="btn btn-primary pers">Reset
+<!--      <fa-icon [icon]="faUndo" [title]="reset"></fa-icon>-->
     </button>
   </div>
 </form>

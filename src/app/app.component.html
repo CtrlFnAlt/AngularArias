@@ -1,13 +1,9 @@
-<app-navbar (onNewUser)="newUser()"></app-navbar>
+<app-navbar></app-navbar>
 <h1>Sistema di Gestione Utenti</h1>
-
 <div class="container-fluid">
   <div class="row">
-    <div class="col-8">
-      <app-users (updateUser)="updateUser($event)"></app-users>
-    </div>
-    <div *ngIf="showForm" class="col-4">
-      <app-user-detail [user]="userSelected"></app-user-detail>
+    <div class="col-12">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
