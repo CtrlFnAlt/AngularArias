@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {IUser} from "./Interfaces/iuser";
+import {UserClass} from "./Classes/user-class";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularFront';
+
+  userSelected: IUser = new UserClass();
+  showForm: boolean = false;
+
+  updateUser(user: IUser) {
+    this.showForm = true;
+    this.userSelected = user;
+  }
+
+  newUser(){
+    this.userSelected = new UserClass();
+    this.showForm = true;
+
+  }
 }

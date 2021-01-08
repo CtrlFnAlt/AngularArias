@@ -1,1 +1,12 @@
-<app-users></app-users>
+<h1>Sistema di Gestione Utenti</h1>
+<a (click)="newUser()" href="#">NewUser</a>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <app-users (updateUser)="updateUser($event)"></app-users>
+    </div>
+    <div *ngIf="showForm" class="col-4">
+      <app-user-detail [user]="userSelected"></app-user-detail>
+    </div>
+  </div>
+</div>

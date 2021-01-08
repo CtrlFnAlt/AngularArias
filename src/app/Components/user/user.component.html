@@ -1,1 +1,11 @@
-<p>user works!</p>
+<td>{{user.name}}</td>
+<td>{{user.lastname}}</td>
+<td>{{user.age}}</td>
+<td>{{user.codf}}</td>
+<td>{{user.email}}</td>
+<td>{{user.province}}</td>
+<td>{{user.phone}}</td>
+<td>
+  <button class="btn btn-danger pers" (click)="deleteUser()"><fa-icon [icon]="faTrashAlt"></fa-icon></button>
+  <button class="btn btn-warning pers " (click)="updateUser()"><fa-icon [icon]="faEdit"></fa-icon></button>
+</td>
