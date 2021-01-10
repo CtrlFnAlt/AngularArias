@@ -5,14 +5,22 @@
 <td>{{user.email}}</td>
 <!--<td>{{user.phone}}</td>-->
 <td>{{user.province}}</td>
-<td>
-  <button (click)="deleteUser()" class="btn btn-danger pers">
-    <fa-icon [icon]="faTrashAlt" [title]="delete"></fa-icon>
-  </button>
-  <button (click)="updateUser()" class="btn btn-warning pers">
-    <fa-icon [icon]="faEdit" [title]="update"></fa-icon>
-  </button>
-  <button class="btn btn-info pers">
-    <fa-icon [icon]="faInfoCircle" [title]="info"></fa-icon>
-  </button>
+<td class="buttons">
+  <div class="row">
+    <div class="col-sm-4">
+      <button (click)="deleteUser()" class="btn btn-danger pers">
+        <fa-icon [icon]="faTrashAlt" [title]="delete"></fa-icon>
+      </button>
+    </div>
+    <div class="col-sm-4">
+      <button (click)="updateUser()" class="btn btn-warning pers">
+        <fa-icon [icon]="faEdit" [title]="update"></fa-icon>
+      </button>
+    </div>
+    <div class="col-sm-4">
+      <button (click)="infoUser()" class="btn btn-info pers">
+        <fa-icon [icon]="faInfoCircle" [title]="info"></fa-icon>
+      </button>
+    </div>
+  </div>
 </td>

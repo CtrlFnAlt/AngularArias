@@ -1,2 +1,40 @@
-<h1 style="color: red">DETTAGLI UTENTI</h1>
-{{user | json}}
+<h2>{{Title}}</h2>
+<table class="table table-dark">
+  <tr>
+    <th>Nome</th>
+    <td>{{user.name}}</td>
+  </tr>
+  <tr>
+    <th>Cognome</th>
+    <td>{{user.lastname}}</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>{{user.email}}</td>
+  </tr>
+  <tr>
+    <th>Codice Fiscale</th>
+    <td>{{user.codf}}</td>
+  </tr>
+  <tr>
+    <th>Telefono</th>
+    <td>{{user.phone}}</td>
+  </tr>
+  <tr>
+    <th>Provincia</th>
+    <td>{{user.province}}</td>
+  </tr>
+  <tr>
+    <th>Età</th>
+    <td>{{user.age}}</td>
+  </tr>
+  <tfoot>
+  <tr>
+    <td class="text-center" colspan="2">
+      <button (click)="backToUsers()" class="btn btn-primary">
+        <fa-icon [icon]="faUndoAlt" [title]="back"></fa-icon>
+      </button>
+    </td>
+  </tr>
+  </tfoot>
+</table>

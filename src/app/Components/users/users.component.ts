@@ -13,7 +13,6 @@ export class UsersComponent implements OnInit {
 
   @Output() updateUser = new EventEmitter();
   Title: string = "User Component";
-
   users: IUser[] = [];
 
   constructor(private service: UserService) {

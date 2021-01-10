@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {UsersComponent} from "./Components/users/users.component";
 import {UserDetailComponent} from "./Components/user-detail/user-detail.component";
 import {ShowUserComponent} from "./Components/show-user/show-user.component";
+import {HttpClientModule} from "@angular/common/http";
 
 
 const routes: Routes = [
@@ -31,7 +32,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [
+    RouterModule,
+    HttpClientModule
+  ]
 })
 export class AppRoutingModule {
 }

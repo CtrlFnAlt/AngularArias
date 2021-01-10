@@ -39,12 +39,15 @@
            placeholder="Inserisci la Provincia..."
            type="text">
   </div>
-  <div class="form-group form-footer">
-    <button (click)="saveUser()" class="btn btn-success pers">Salva
-<!--      <fa-icon [icon]="faSave" [title]="save"></fa-icon>-->
+  <div class="form-group form-footer text-center">
+    <button (click)="saveUser()" class="btn btn-success pers">
+      <fa-icon [icon]="faSave" [title]="save"></fa-icon>
     </button>
-    <button (click)="resetForm(formEditCreate.form)" class="btn btn-primary pers">Reset
-<!--      <fa-icon [icon]="faUndo" [title]="reset"></fa-icon>-->
+    <button (click)="resetForm(formEditCreate.form)" class="btn btn-primary pers">
+      <fa-icon [icon]="faBroom" [title]="reset"></fa-icon>
+    </button>
+    <button (click)="backToUsers()" class="btn btn-primary">
+      <fa-icon [icon]="faUndo" [title]="back"></fa-icon>
     </button>
   </div>
 </form>

@@ -10,8 +10,8 @@ import {UserDetailComponent} from './Components/user-detail/user-detail.componen
 import {FormsModule} from "@angular/forms";
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NavbarComponent} from './Components/navbar/navbar.component';
-import { HomeComponent } from './Components/home/home.component';
-import { ShowUserComponent } from './Components/show-user/show-user.component';
+import {HomeComponent} from './Components/home/home.component';
+import {ShowUserComponent} from './Components/show-user/show-user.component';
 
 
 @NgModule({
@@ -30,6 +30,7 @@ import { ShowUserComponent } from './Components/show-user/show-user.component';
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
+    ,
   ],
 
   providers: [UserService],
