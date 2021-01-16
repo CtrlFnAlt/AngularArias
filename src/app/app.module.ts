@@ -23,6 +23,7 @@ import {ShowUserComponent} from './Components/show-user/show-user.component';
     NavbarComponent,
     HomeComponent,
     ShowUserComponent,
+
   ],
 
   imports: [
