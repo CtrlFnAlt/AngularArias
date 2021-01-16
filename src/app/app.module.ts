@@ -30,7 +30,7 @@ import {ShowUserComponent} from './Components/show-user/show-user.component';
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
-    ,
+
   ],
 
   providers: [UserService],

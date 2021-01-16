@@ -2,7 +2,7 @@ import {IUser} from "../Interfaces/iuser";
 
 export class UserClass implements IUser {
   age: number;
-  codf: string;
+  fiscalcode: string;
   email: string;
   id: number;
   lastname: string;
@@ -12,7 +12,7 @@ export class UserClass implements IUser {
 
   constructor() {
     this.age = 0;
-    this.codf = '';
+    this.fiscalcode = '';
     this.email = '';
     this.id = 0;
     this.lastname = '';

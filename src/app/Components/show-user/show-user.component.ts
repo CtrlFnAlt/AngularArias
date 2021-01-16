@@ -25,7 +25,9 @@ export class ShowUserComponent implements OnInit {
       if (!param.id) {
         return;
       }
-      this.user = this.userService.getUser(+param.id)
+      this.userService.getUser(+param.id).subscribe((res) => {
+        this.user = res.data;
+      });
     });
   }
 

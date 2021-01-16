@@ -5,7 +5,7 @@ import {UserClass} from "../../Classes/user-class";
 import {ActivatedRoute, Router} from "@angular/router";
 
 //FontAwesome
-import {faSave, faUndo, faBroom} from '@fortawesome/free-solid-svg-icons';
+import {faBroom, faSave, faUndo} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-detail',
@@ -45,7 +45,9 @@ export class UserDetailComponent implements OnInit {
         if (!param.id) {
           return;
         }
-        this.user = this.userService.getUser(+param.id);
+        this.userService.getUser(+param.id).subscribe((res) => {
+          this.user = res.data;
+        });
       });
   }
 
@@ -57,13 +59,34 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
+  formUser() {
+    this.userService.updateUser(this.user).subscribe(
+      res => {
+        alert(res.message);
+        if (res.success) {
+          this.router.navigate(['users']);
+        } else {
+          alert(res.message);
+        }
+      });
+  }
+
+  createUser() {
+    this.userService.createUser(this.user).subscribe(
+      res => {
+        alert(res.message);
+        if (res.success) {
+          this.router.navigate(['users']);
+        }
+      });
+  }
+
   saveUser() {
     if (this.user.id > 0) {
-      this.userService.updateUser(this.user);
+      this.formUser();
     } else {
-      this.userService.createUser(this.user);
+      this.createUser();
     }
-    this.router.navigate(['users']);
   }
 
   backToUsers() {

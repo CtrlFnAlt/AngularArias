@@ -1,46 +1,61 @@
 <form #formEditCreate="ngForm" action="" class="userForm"><!-- {{formEditCreate.form.value | json}} -->
   <input [(ngModel)]="user.id" name="id" type="hidden">
-  <div class="form-group">
-    <label for="firstname">Nome</label>
-    <input [(ngModel)]="user.name" class="form-control" id="firstname" name="firstname"
-           placeholder="Inserisci il Nome..."
-           type="text">
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="firstname">Nome</label>
+      <input [(ngModel)]="user.name" class="form-control" id="firstname" #firstname="ngModel" name="firstname" placeholder="Inserisci il Nome..."
+             required minlength="3"
+             type="text">
+      <div class="alert-danger" *ngIf="firstname.errors.required">
+        <small>*Campo Nome Obbligatorio!</small>
+      </div>
+      <div class="alert-danger" *ngIf="firstname.errors.minlength">
+        <small>*Lunghezza minima di 3 caratteri!</small>
+      </div>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="lastname">Cognome</label>
+      <input [(ngModel)]="user.lastname" class="form-control" id="lastname" name="lastname"
+             placeholder="Inserisci il Cognome..."
+             type="text">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="lastname">Cognome</label>
-    <input [(ngModel)]="user.lastname" class="form-control" id="lastname" name="lastname"
-           placeholder="Inserisci il Cognome..."
-           type="text">
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="fiscalcode">Codice Fiscale</label>
+      <input [(ngModel)]="user.fiscalcode" class="form-control" id="fiscalcode" name="fiscalcode"
+             placeholder="Inserisci il Codice Fiscale..." type="text">
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="age">Età</label>
+      <input [(ngModel)]="user.age" class="form-control" id="age" name="age" placeholder="Inserisci l'Età..."
+             type="number">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="fiscalcode">Codice Fiscale</label>
-    <input [(ngModel)]="user.codf" class="form-control" id="fiscalcode" name="fiscalcode"
-           placeholder="Inserisci il Codice Fiscale..." type="text">
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="email">Email</label>
+      <input [(ngModel)]="user.email" class="form-control" id="email" name="email" placeholder="Inserisci l'Email..."
+             type="email">
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="phone">Telefono</label>
+      <input [(ngModel)]="user.phone" class="form-control" id="phone" name="phone"
+             placeholder="Inserisci il Numero di Telefono..."
+             type="text">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="age">Età</label>
-    <input [(ngModel)]="user.age" class="form-control" id="age" name="age" placeholder="Inserisci l'Età..."
-           type="number">
+  <div class="form-row">
+    <div class="form-group col-sm-6 offset-sm-3">
+      <label for="province">Provincia</label>
+      <input [(ngModel)]="user.province" class="form-control" id="province" name="province"
+             placeholder="Inserisci la Provincia..."
+             type="text">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input [(ngModel)]="user.email" class="form-control" id="email" name="email" placeholder="Inserisci l'Email..."
-           type="email">
-  </div>
-  <div class="form-group">
-    <label for="phone">Telefono</label>
-    <input [(ngModel)]="user.phone" class="form-control" id="phone" name="phone"
-           placeholder="Inserisci il Numero di Telefono..."
-           type="text">
-  </div>
-  <div class="form-group">
-    <label for="province">Provincia</label>
-    <input [(ngModel)]="user.province" class="form-control" id="province" name="province"
-           placeholder="Inserisci la Provincia..."
-           type="text">
-  </div>
-  <div class="form-group form-footer text-center">
-    <button (click)="saveUser()" class="btn btn-success pers">
+
+  <div class="form-group col-sm-12 form-footer text-center">
+    <button (click)="saveUser()" [disabled]="formEditCreate.invalid" class="btn btn-success pers">
       <fa-icon [icon]="faSave" [title]="save"></fa-icon>
     </button>
     <button (click)="resetForm(formEditCreate.form)" class="btn btn-primary pers">

@@ -3,7 +3,7 @@ export interface IUser {
   name: string;
   lastname: string;
   email: string;
-  codf: string;
+  fiscalcode: string;
   phone: number;
   province: string;
   age: number;

@@ -19,11 +19,17 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.users = this.service.getUsers();
+    this.service.getUsers().subscribe(
+      (res) => {
+        this.users = res.data;
+      });
   }
 
   onDeleteUser(user: IUser){
-    this.service.deleteUsers(user);
+    this.service.deleteUsers(user).subscribe(res =>{
+      alert(res.message);
+      this.service.getUsers().subscribe(res => {this.users = res.data});
+    }, error => console.log(error));
   }
 
   onSelectUser(user: UserClass){
