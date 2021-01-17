@@ -1,4 +1,6 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AuthService} from "../../Services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +10,24 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   @Output() onNewUser = new EventEmitter();
-  constructor() { }
+  isUserLoggedIn = false;
+
+  constructor(private auth: AuthService, private router: Router) {
+  }
 
   ngOnInit(): void {
+    this.isUserLoggedIn = this.auth.isUserLoggedIn()
   }
 
-  newUser(){
+  newUser() {
     this.onNewUser.emit();
   }
+
+  logout(e) {
+    e.preventDefault();
+    this.auth.logout();
+    this.router.navigate(['login']);
+  }
+
 
 }

@@ -17,5 +17,13 @@
         <a class="nav-link" href="#" routerLink="/users/new">Nuovo Utente</a>
       </li>
     </ul>
+    <ul class="navbar-nav px-3 ml-auto">
+      <li class="nav-item text-nowrap">
+        <a *ngIf="!isUserLoggedIn" href="#" class="nav-link">Sign In</a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a *ngIf="isUserLoggedIn" (click)="logout($event)" href="#" class="nav-link">Sign Out</a>
+      </li>
+    </ul>
   </div>
 </nav>

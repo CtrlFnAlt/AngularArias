@@ -12,6 +12,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NavbarComponent} from './Components/navbar/navbar.component';
 import {HomeComponent} from './Components/home/home.component';
 import {ShowUserComponent} from './Components/show-user/show-user.component';
+import {AuthService} from "./Services/auth.service";
+import { LoginComponent } from './Components/Auth/login/login.component';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import {ShowUserComponent} from './Components/show-user/show-user.component';
     NavbarComponent,
     HomeComponent,
     ShowUserComponent,
+    LoginComponent,
   ],
 
   imports: [
@@ -32,7 +35,9 @@ import {ShowUserComponent} from './Components/show-user/show-user.component';
     FontAwesomeModule,
   ],
 
-  providers: [UserService],
+  providers: [UserService,
+    AuthService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {

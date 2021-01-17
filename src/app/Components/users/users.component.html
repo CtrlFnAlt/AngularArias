@@ -1,15 +1,17 @@
-<table class="table">
-  <caption>Gli Utenti</caption>
-  <th>Nome</th>
-  <th>Cognome</th>
-<!--  <th>Età</th>-->
-<!--  <th>Codice Fiscale</th>-->
-  <th>Email</th>
-<!--  <th>Telefono</th>-->
-  <th>Provincia</th>
-  <th>Azioni</th>
-  <tr app-user *ngFor="let user of users" [userdata]="user"
-  (userOutput)="onDeleteUser($event)" (userSelected)="onSelectUser($event)"
-
-  ></tr>
-</table>
+<div class="container">
+  <div class="">
+    <table class="table table-striped table-sm">
+      <caption>Gli Utenti</caption>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <!--  <th>Età</th>-->
+      <!--  <th>Codice Fiscale</th>-->
+      <th>Email</th>
+      <!--  <th>Telefono</th>-->
+      <th>Provincia</th>
+      <th>Azioni</th>
+      <tr (userOutput)="onDeleteUser($event)" (userSelected)="onSelectUser($event)" *ngFor="let user of users"
+          [userdata]="user" app-user></tr>
+    </table>
+  </div>
+</div>
