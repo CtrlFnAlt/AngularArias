@@ -4,6 +4,7 @@ import {UsersComponent} from "./Components/users/users.component";
 import {UserDetailComponent} from "./Components/user-detail/user-detail.component";
 import {ShowUserComponent} from "./Components/show-user/show-user.component";
 import {HttpClientModule} from "@angular/common/http";
+import {RoutesGuardService} from "./Services/routes-guard.service";
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   },
   {
     path: 'users/:id/edit',
-    component: UserDetailComponent
+    component: UserDetailComponent,
+    canActivate: [RoutesGuardService]
   },
   {
     path: 'users/:id',
@@ -35,7 +37,11 @@ const routes: Routes = [
   exports: [
     RouterModule,
     HttpClientModule
-  ]
+  ],
+  providers: [
+    RoutesGuardService
+  ],
+  declarations: []
 })
 export class AppRoutingModule {
 }

@@ -1,3 +1,7 @@
 input.ng-invalid{
   border: 1px solid #f00;
 }
+
+input.ng-untouched{
+  border: 1px solid gray;
+}

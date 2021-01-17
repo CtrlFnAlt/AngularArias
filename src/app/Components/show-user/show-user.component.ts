@@ -21,11 +21,11 @@ export class ShowUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = new UserClass();
-    this.routes.params.subscribe(param => {
-      if (!param.id) {
+    this.routes.paramMap.subscribe(param => {
+      if (!param.get('id')) {
         return;
       }
-      this.userService.getUser(+param.id).subscribe((res) => {
+      this.userService.getUser(+param.get('id')).subscribe((res) => {
         this.user = res.data;
       });
     });
