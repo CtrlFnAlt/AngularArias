@@ -13,7 +13,8 @@ import {NavbarComponent} from './Components/navbar/navbar.component';
 import {HomeComponent} from './Components/home/home.component';
 import {ShowUserComponent} from './Components/show-user/show-user.component';
 import {AuthService} from "./Services/auth.service";
-import { LoginComponent } from './Components/Auth/login/login.component';
+import {LoginComponent} from './Components/Auth/login/login.component';
+import { RegisterComponent } from './Components/Auth/register/register.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { LoginComponent } from './Components/Auth/login/login.component';
     HomeComponent,
     ShowUserComponent,
     LoginComponent,
+    RegisterComponent,
   ],
 
   imports: [

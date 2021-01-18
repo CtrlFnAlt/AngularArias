@@ -6,6 +6,7 @@ import {ShowUserComponent} from "./Components/show-user/show-user.component";
 import {HttpClientModule} from "@angular/common/http";
 import {RoutesGuardService} from "./Services/routes-guard.service";
 import {LoginComponent} from "./Components/Auth/login/login.component";
+import {RegisterComponent} from "./Components/Auth/register/register.component";
 
 
 const routes: Routes = [
@@ -33,7 +34,13 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'signup',
+    component: RegisterComponent,
+    pathMatch: 'full'
   }
 ];
 

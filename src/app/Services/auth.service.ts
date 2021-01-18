@@ -1,26 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private isUserLogIn = true;
-  constructor() { }
+  private isUserLogIn = false;
 
-  isUserLoggedIn(){
+  constructor() {
+  }
+
+  isUserLoggedIn() {
+    this.isUserLogIn = !!localStorage.getItem('token'); //Doppia negazione per trasformalo in booleno.
     return this.isUserLogIn;
   }
 
-  signIn(email: string, password: string){
-
+  signIn(email: string, password: string) {
+    localStorage.setItem('token', email);
+    return true;
   }
 
-  signUp(username: string, email: string, password: string){
-
+  signUp(username: string, email: string, password: string) {
   }
 
-  logout(){
-    this.isUserLogIn = false;
+  logout() {
+    localStorage.removeItem('token');
+    this.isUserLogIn = true;
   }
 }

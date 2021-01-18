@@ -10,12 +10,13 @@ import {Router} from "@angular/router";
 export class NavbarComponent implements OnInit {
 
   @Output() onNewUser = new EventEmitter();
+
   isUserLoggedIn = false;
 
   constructor(private auth: AuthService, private router: Router) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.isUserLoggedIn = this.auth.isUserLoggedIn()
   }
 
@@ -25,9 +26,21 @@ export class NavbarComponent implements OnInit {
 
   logout(e) {
     e.preventDefault();
+    this.isUserLoggedIn = false;
     this.auth.logout();
-    this.router.navigate(['login']);
+    this.router.navigate(['login']).then();
   }
 
+  singIn(e) {
+    e.preventDefault();
+    this.isUserLoggedIn = true;
+    this.router.navigate(['login']).then();
+  }
+
+  singUp(e) {
+    e.preventDefault();
+    this.isUserLoggedIn = true;
+    this.router.navigate(['signup']).then();
+  }
 
 }
