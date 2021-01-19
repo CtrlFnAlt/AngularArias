@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthService} from "../../Services/auth.service";
 import {Router} from "@angular/router";
+import {IUser} from "../../Interfaces/iuser";
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +12,22 @@ export class NavbarComponent implements OnInit {
 
   @Output() onNewUser = new EventEmitter();
 
+  username: string;
   isUserLoggedIn = false;
 
   constructor(private auth: AuthService, private router: Router) {
+    auth.userSignIn.subscribe((user: IUser) => {
+      this.username = user.name;
+      this.isUserLoggedIn = true;
+    });
+    auth.userLogOut.subscribe(() => {
+      this.username = '';
+      this.isUserLoggedIn = false;
+    });
+    auth.userSignUp.subscribe((user: IUser) => {
+      this.username = user.name;
+      this.isUserLoggedIn = true;
+    });
   }
 
   ngOnInit() {

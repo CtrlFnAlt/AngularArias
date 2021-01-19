@@ -1,1 +1,59 @@
-<p>register works!</p>
+<div class="row">
+  <div class="col-sm-6 offset-md-3">
+    <form #f="ngForm" (ngSubmit)="singUp(f)" name="signUpForm">
+
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input #name="ngModel" class="form-control" id="name" minlength="2"
+               name="name"
+               ngModel
+               placeholder="Inserisci il tuo Nome..." required type="text">
+        <div *ngIf="name.dirty && name.touched && name.invalid">
+          <div *ngIf="name.errors.required" class="alert-danger">
+            <small>*Campo Email Obbligatorio!</small>
+          </div>
+          <div *ngIf="name.errors.minlength" class="alert-danger">
+            <small>*Formato non valido</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input #email="ngModel" class="form-control" email id="email" name="email"
+               ngModel
+               placeholder="Inserisci l'Email..." required type="email">
+        <div *ngIf="email.dirty && email.touched && email.invalid">
+          <div *ngIf="email.errors.required" class="alert-danger">
+            <small>*Campo Email Obbligatorio!</small>
+          </div>
+          <div *ngIf="email.errors.email" class="alert-danger">
+            <small>*Formato non valido</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input #password="ngModel" class="form-control" id="password" minlength="6" name="password"
+               ngModel
+               placeholder="Inserisci la tua Password..." required type="password">
+        <div *ngIf="password.dirty && password.touched && password.invalid">
+          <div *ngIf="password.errors.required" class="alert-danger">
+            <small>*Campo Password Obbligatorio!</small>
+          </div>
+          <div *ngIf="password.errors.minlength" class="alert-danger">
+            <small>*Lunghezza Minima 6 caratteri!</small>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group text-center">
+        <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Log in</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h1>register works!</h1>

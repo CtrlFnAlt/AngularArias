@@ -1,4 +1,6 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Output, EventEmitter} from '@angular/core';
+import {IUser} from "../Interfaces/iuser";
+import {UserClass} from "../Classes/user-class";
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +8,9 @@ import {Injectable} from '@angular/core';
 export class AuthService {
 
   private isUserLogIn = false;
+  @Output() userSignIn = new EventEmitter<IUser>();
+  @Output() userSignUp = new EventEmitter<IUser>();
+  @Output() userLogOut = new EventEmitter();
 
   constructor() {
   }
@@ -17,14 +22,25 @@ export class AuthService {
 
   signIn(email: string, password: string) {
     localStorage.setItem('token', email);
+    let user = new UserClass();
+    user.name = 'ArmandoProvaSignIn';
+    user.email = email;
+    this.userSignIn.emit(user);
     return true;
   }
 
   signUp(username: string, email: string, password: string) {
+    localStorage.setItem('token', email);
+    let user = new UserClass();
+    user.name = username;
+    user.email = email;
+    this.userSignUp.emit(user);
+    return true;
   }
 
   logout() {
     localStorage.removeItem('token');
+    this.userLogOut.emit();
     this.isUserLogIn = true;
   }
 }
