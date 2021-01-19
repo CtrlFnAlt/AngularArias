@@ -12,9 +12,11 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
   user: IUser;
-  // patternEmail: string = '(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])';
 
   constructor(private auth: AuthService, private router: Router) {
+    auth.userSignIn.subscribe((user: IUser) => {
+      router.navigate(['/']).then();
+    });
   }
 
   ngOnInit(): void {
@@ -24,11 +26,8 @@ export class LoginComponent implements OnInit {
     if (!form.valid) {
       return false;
     } else {
-     let result =  this.auth.signIn(form.value.email, form.value.password);
-      // if(result){
-      //   this.router.navigate(['users']);
-      // }
+      let result = this.auth.signIn(form.value.email, form.value.password);
+        this.router.navigate(['users']).then();
     }
-
   }
 }

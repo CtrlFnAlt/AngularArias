@@ -11,10 +11,10 @@
         <a class="nav-link" href="#" routerLink="">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="users">Utenti</a>
+        <a class="nav-link" href="#" *ngIf="isUserLoggedIn" routerLink="users">Utenti</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/users/new">Nuovo Utente</a>
+        <a class="nav-link" href="#" *ngIf="isUserLoggedIn" routerLink="/users/new">Nuovo Utente</a>
       </li>
     </ul>
     <ul class="navbar-nav px-3 ml-auto">

@@ -42,13 +42,32 @@ export class AuthService {
       );
   }
 
+
+
   signUp(username: string, email: string, password: string) {
-    localStorage.setItem('token', email);
-    let user = new UserClass();
+    alert('authService_Signup - ' + email + ' ' + password + ' ' + username);
+    const user = new UserClass();
     user.name = username;
     user.email = email;
-    this.userSignUp.emit(user);
-    return true;
+
+    this.http.post(this.APIAUTHURL + 'signup',
+      {
+        name: username,
+        email: email,
+        password: password
+      }
+    ).subscribe(
+      (payload: IJwt) => {
+        localStorage.setItem('token', payload.access_token);
+        console.log(payload);
+        localStorage.setItem('user', JSON.stringify(payload));
+        this.userSignUp.emit(user);
+        alert('authService_Signup - ' + email + ' ' + password + ' ' + username);
+      },
+      (httpResp: HttpErrorResponse) => {
+        alert(httpResp.message);
+        return false;
+      });
   }
 
   logout() {
@@ -68,7 +87,7 @@ export class AuthService {
     return user;
   }
 
-  getToken(){
+  getToken() {
     return localStorage.getItem('token');
   }
 }

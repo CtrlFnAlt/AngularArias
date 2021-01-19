@@ -12,17 +12,15 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(private auth: AuthService, private router: Router) {
+    auth.userSignUp.subscribe(() => {
+      router.navigate(['/'])
+    });
   }
 
   ngOnInit(): void {
   }
 
-  singUp(form: NgForm) {
-    let result = this.auth.signUp(form.value.name, form.value.email, form.value.password);
-    if (!result) {
-      return;
-    } else {
-      this.router.navigate(['users']).then();
-    }
+  signUp(form: NgForm) {
+    this.auth.signUp(form.value.name, form.value.email, form.value.password);
   }
 }

@@ -12,16 +12,19 @@ import {RegisterComponent} from "./Components/Auth/register/register.component";
 const routes: Routes = [
   {
     path: 'users',
-    component: UsersComponent
+    component: UsersComponent,
+    canActivate: [RoutesGuardService]
   },
   {
     path: '',
     redirectTo: 'users',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [RoutesGuardService]
   },
   {
     path: 'users/new',
-    component: UserDetailComponent
+    component: UserDetailComponent,
+    canActivate: [RoutesGuardService]
   },
   {
     path: 'users/:id/edit',
@@ -30,17 +33,16 @@ const routes: Routes = [
   },
   {
     path: 'users/:id',
-    component: ShowUserComponent
+    component: ShowUserComponent,
+    canActivate: [RoutesGuardService]
   },
   {
     path: 'login',
     component: LoginComponent,
-    pathMatch: 'full'
   },
   {
     path: 'signup',
     component: RegisterComponent,
-    pathMatch: 'full'
   }
 ];
 
