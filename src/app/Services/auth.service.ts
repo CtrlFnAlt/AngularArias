@@ -1,7 +1,7 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {IUser} from "../Interfaces/iuser";
 import {UserClass} from "../Classes/user-class";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {IJwt} from "../Interfaces/ijwt";
 import {tap} from "rxjs/operators";
 
@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   signIn(email: string, password: string) {
-   return this.http.post(this.APIAUTHURL + 'login', {email: email, password: password})
+    return this.http.post(this.APIAUTHURL + 'login', {email: email, password: password})
       .pipe(tap(
         (payload: IJwt) => {
           localStorage.setItem('token', payload.access_token);
@@ -41,28 +41,18 @@ export class AuthService {
   }
 
   signUp(username: string, email: string, password: string) {
-    alert('authService_Signup - ' + email + ' ' + password + ' ' + username);
     const user = new UserClass();
     user.name = username;
     user.email = email;
-    return this.http.post(this.APIAUTHURL + 'signup',
-      {
-        name: username,
-        email: email,
-        password: password
-      }
-    ).subscribe(
-      (payload: IJwt) => {
-        localStorage.setItem('token', payload.access_token);
-        console.log(payload);
-        localStorage.setItem('user', JSON.stringify(payload));
-        this.userSignUp.emit(user);
-        alert('authService_Signup - ' + email + ' ' + password + ' ' + username);
-      },
-      (httpResp: HttpErrorResponse) => {
-        alert(httpResp.message);
-        return false;
-      });
+    return this.http.post(this.APIAUTHURL + 'signup', {name: username, email: email, password: password})
+      .pipe(tap(
+        (payload: IJwt) => {
+          localStorage.setItem('token', payload.access_token);
+          console.log(payload);
+          localStorage.setItem('user', JSON.stringify(payload));
+          this.userSignUp.emit(user);
+        })
+      );
   }
 
   logout() {

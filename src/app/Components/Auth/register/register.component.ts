@@ -12,15 +12,28 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(private auth: AuthService, private router: Router) {
-    auth.userSignUp.subscribe(() => {
-      router.navigate(['/'])
-    });
   }
 
   ngOnInit(): void {
   }
 
-  signUp(form: NgForm) {
-    this.auth.signUp(form.value.name, form.value.email, form.value.password);
+  async signUp(form: NgForm) {
+    try {
+      const res = await this.auth.signUp(form.value.name, form.value.email, form.value.password).toPromise();
+      this.router.navigate(['/']).then();
+    }catch(e){
+      switch (e.status) {
+        case 401:
+          alert(e.error.error);
+          break;
+        case 404:
+          alert(e.statusText);
+          break;
+        case 500:
+          alert('Errore mentre contattavo il Server!');
+          break;
+      }
+    }
   }
+
 }
