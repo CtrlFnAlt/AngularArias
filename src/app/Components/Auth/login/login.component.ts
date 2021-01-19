@@ -14,20 +14,46 @@ export class LoginComponent implements OnInit {
   user: IUser;
 
   constructor(private auth: AuthService, private router: Router) {
-    auth.userSignIn.subscribe((user: IUser) => {
-      router.navigate(['/']).then();
-    });
   }
 
   ngOnInit(): void {
   }
 
-  signIn(form: NgForm) {
+  /*signIn(form: NgForm) {
     if (!form.valid) {
       return false;
-    } else {
-      let result = this.auth.signIn(form.value.email, form.value.password);
-        this.router.navigate(['users']).then();
+    }
+    this.auth.signIn(form.value.email, form.value.password).subscribe(
+      (payload: IJwt) => {
+        alert('Login Successful');
+        this.router.navigate(['/']).then();
+      },
+      (error) => {
+        alert(error.error);
+        console.log(error);
+      });
+  }*/
+
+  async signIn(form: NgForm) {
+    if (!form.valid) {
+      return false;
+    }
+    try {
+      const res = await this.auth.signIn(form.value.email, form.value.password).toPromise();
+      alert(res.username + ' logged in successully');
+      this.router.navigate(['/']).then();
+    } catch (e) {
+      switch (e.status) {
+        case 401:
+          alert(e.error.error);
+          break;
+        case 404:
+          alert(e.statusText);
+          break;
+        case 500:
+          alert('Errore mentre contattavo il Server!');
+          break;
+      }
     }
   }
 }

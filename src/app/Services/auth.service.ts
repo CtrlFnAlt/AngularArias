@@ -3,6 +3,7 @@ import {IUser} from "../Interfaces/iuser";
 import {UserClass} from "../Classes/user-class";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {IJwt} from "../Interfaces/ijwt";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,8 @@ export class AuthService {
   }
 
   signIn(email: string, password: string) {
-    this.http.post(this.APIAUTHURL + 'login', {email: email, password: password})
-      .subscribe(
+   return this.http.post(this.APIAUTHURL + 'login', {email: email, password: password})
+      .pipe(tap(
         (payload: IJwt) => {
           localStorage.setItem('token', payload.access_token);
           localStorage.setItem('user', JSON.stringify(payload));
@@ -35,22 +36,16 @@ export class AuthService {
           user.email = payload.email;
           this.userSignIn.emit(user);
           return true;
-        },
-        (httpResp: HttpErrorResponse) => {
-          console.log(httpResp.message);
-        }
+        })
       );
   }
-
-
 
   signUp(username: string, email: string, password: string) {
     alert('authService_Signup - ' + email + ' ' + password + ' ' + username);
     const user = new UserClass();
     user.name = username;
     user.email = email;
-
-    this.http.post(this.APIAUTHURL + 'signup',
+    return this.http.post(this.APIAUTHURL + 'signup',
       {
         name: username,
         email: email,
