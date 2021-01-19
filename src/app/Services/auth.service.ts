@@ -27,7 +27,7 @@ export class AuthService {
     this.http.post(this.APIAUTHURL + 'login', {email: email, password: password})
       .subscribe(
         (payload: IJwt) => {
-          localStorage.setItem('token', payload.token_type);
+          localStorage.setItem('token', payload.access_token);
           localStorage.setItem('user', JSON.stringify(payload));
           console.log(payload);
           let user = new UserClass();
@@ -37,7 +37,6 @@ export class AuthService {
           return true;
         },
         (httpResp: HttpErrorResponse) => {
-          alert(httpResp.message);
           console.log(httpResp.message);
         }
       );
@@ -70,6 +69,6 @@ export class AuthService {
   }
 
   getToken(){
-    return localStorage.getItem('access_token');
+    return localStorage.getItem('token');
   }
 }

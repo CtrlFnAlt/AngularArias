@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {IUser} from "../Interfaces/iuser";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {IUsersResponse} from "../Interfaces/iusersresponse";
 import {IUserResponse} from "../Interfaces/iuser-response";
 import {AuthService} from "./auth.service";
@@ -15,23 +15,47 @@ export class UserService {
   constructor(private http: HttpClient, private auth: AuthService) {
   }
 
+  getAuthenHeaderToken(): HttpHeaders {
+    let header = new HttpHeaders(
+      {
+        Authorization: 'Bearer' + this.auth.getToken()
+      }
+    );
+    return header;
+  }
+
   getUsers() {
-    return this.http.get<IUsersResponse>(this.APIURL + '?token=' + this.auth.getToken());
+    return this.http.get<IUsersResponse>(this.APIURL, {
+      headers: this.getAuthenHeaderToken()
+    });
   }
 
   getUser(id: number) {
-    return this.http.get<IUserResponse>(this.APIURL + '/' + id);
+    return this.http.get<IUserResponse>(this.APIURL + '/' + id,
+      {
+        headers: this.getAuthenHeaderToken()
+      });
   }
 
   deleteUsers(user: IUser) {
-    return this.http.delete<IUserResponse>(this.APIURL + '/' + user.id);
+    const data = {method: 'DELETE'};
+    return this.http.delete<IUserResponse>(this.APIURL + '/' + user.id,
+      {
+        headers: this.getAuthenHeaderToken()
+      });
   }
 
   updateUser(user: IUser) {
-    return this.http.patch<IUserResponse>(this.APIURL + '/' + user.id, user)
+    return this.http.patch<IUserResponse>(this.APIURL + '/' + user.id, user,
+      {
+        headers: this.getAuthenHeaderToken()
+      });
   }
 
   createUser(user: IUser) {
-    return this.http.post<IUserResponse>(this.APIURL, user);
+    return this.http.post<IUserResponse>(this.APIURL, user,
+      {
+        headers: this.getAuthenHeaderToken()
+      });
   }
 }
